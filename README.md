@@ -17,8 +17,5 @@ This agent uses a large language model to play Gomoku (8×8 board, five-in-a-row
 - Robust JSON parsing with fallback strategy
 
 ## 📂 Repository Structure
-.
-├── student_llm_agent.py # Agent implementation
-├── agent.json # Manifest for framework discovery
-└── README.md # Project documentation
-
+-my_example.py - Main agent implementation
+-agent.json - Agent configuration file
