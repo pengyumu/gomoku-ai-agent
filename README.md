@@ -1,1 +1,1 @@
-# gomoku-ai-agent
+# Gomoku-Ai-Agent
