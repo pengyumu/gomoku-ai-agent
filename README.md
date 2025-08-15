@@ -12,20 +12,11 @@ A lightweight, LLM-steered Gomoku (8×8) agent that combines minimal code heuris
 - Strict one-line JSON output contract with lenient parsing + safe fallback
 
 ## 🤖 Key functions
--  _get_max_chain_head(board, p)
-Counts the longest consecutive chain for player p in four directions, starting only from chain heads.
-
-- _has_open_three(board, p)
-Returns True if the pattern . p p p . (open three) exists anywhere (H/V/diagonals).
-
--  _find_immediate_win(board, legal_moves, p)
-Returns a coordinate (r, c) if playing there creates 5 in a row (H/V/diagonals). Used for hints only.
-
--  _sorted_moves_center_first(game_state)
-Returns all legal moves sorted by closeness to center (used in prompt & fallback).
-
--  get_move(game_state)
-Orchestrates analysis → prompt → LLM → parsing → fallback to produce a final move.
+- get_max_chain_head(board, p): Counts the longest consecutive chain for player p in four directions, starting only from chain heads.
+- has_open_three(board, p): Returns True if the  open three exists anywhere (H/V/diagonals).
+- find_immediate_win(board, legal_moves, p): Returns a coordinate (r, c) if playing there creates 5 in a row (H/V/diagonals). Used for hints only.
+- sorted_moves_center_first(game_state): Returns all legal moves sorted by closeness to center (used in prompt & fallback).
+- get_move(game_state): Orchestrates analysis → prompt → LLM → parsing → fallback to produce a final move.
 
 ## 📂 Repository Structure
 - my_example.py 
