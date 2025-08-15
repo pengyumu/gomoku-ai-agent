@@ -1,7 +1,9 @@
 # Gomoku-StudentLLMAgent
 
-An **LLM-based Gomoku agent** designed for the [Gomoku AI Framework](https://github.com/sitfoxfly/gomoku-ai-agent-example/).  
-This agent uses a large language model to play Gomoku (8×8 board, five-in-a-row wins) with **strict JSON output** and **legal move constraints**.
+A lightweight, LLM-steered Gomoku (8×8) agent that combines minimal code heuristics with prompted decision rules to pick moves. It favors central control, detects immediate tactical threats/wins for prompt hints, and robustly parses the model’s JSON move with a safe fallback.
+
+
+
 
 ## 📌 Features
 - Uses `qwen3-8b` model via Groq API
