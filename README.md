@@ -4,19 +4,28 @@ A lightweight, LLM-steered Gomoku (8×8) agent that combines minimal code heuris
 
 
 
-
 ## 📌 Features
-- Uses `qwen3-8b` model via Groq API
-- Follows strict move selection priority:
-  1. Win in 1 move
-  2. Block opponent’s win in 1 move
-  3. Create immediate threats (open four)
-  4. Create dual threats (open threes)
-  5. Extend/bridge longest chain
-  6. Prefer central & flexible positions
-  7. Fallback to earliest legal move
-- Outputs only valid moves from `LEGAL_MOVES`
-- Robust JSON parsing with fallback strategy
+- Uses `google/gemma-2-9b-it` model
+- Non–code-based strategy: engine does not auto-place winning/blocking moves — it prompts the LLM to do so
+- Detects immediate win (for either side) and open-three threats to guide prompts
+- Center-first bias for the opening and as a final fallback
+- Strict one-line JSON output contract with lenient parsing + safe fallback
+
+## 🤖 Key functions
+-  _get_max_chain_head(board, p)
+Counts the longest consecutive chain for player p in four directions, starting only from chain heads.
+
+- _has_open_three(board, p)
+Returns True if the pattern . p p p . (open three) exists anywhere (H/V/diagonals).
+
+-  _find_immediate_win(board, legal_moves, p)
+Returns a coordinate (r, c) if playing there creates 5 in a row (H/V/diagonals). Used for hints only.
+
+-  _sorted_moves_center_first(game_state)
+Returns all legal moves sorted by closeness to center (used in prompt & fallback).
+
+-  get_move(game_state)
+Orchestrates analysis → prompt → LLM → parsing → fallback to produce a final move.
 
 ## 📂 Repository Structure
 - my_example.py 
