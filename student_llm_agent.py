@@ -148,7 +148,7 @@ class StudentLLMAgent(Agent):
                     "Select EXACTLY ONE coordinate from REQUIRED_MOVES and place your stone there. "
                     "Do NOT consider any other moves"
                 )
-         elif stats["rival_chain"] >= 4 or self._has_open_three(game_state.board, rival):
+        elif stats["rival_chain"] >= 4 or self._has_open_three(game_state.board, rival):
             if opp_win_hint is not None:
                 situation_rules = (
                     "CRITICAL THREAT: Opponent will win next at {opp_win_hint}. "
