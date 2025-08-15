@@ -20,7 +20,7 @@ A lightweight, LLM-steered Gomoku (8×8) agent that combines minimal code heuris
 - get_move(game_state): Orchestrates analysis → prompt → LLM → parsing → fallback to produce a final move.
 
 ## 📂 Repository Structure
-- my_example.py 
+- student_llm_agent.py
 - agent.json
 
 
