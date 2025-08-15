@@ -141,13 +141,7 @@ class StudentLLMAgent(Agent):
             situation_rules = (
                 "You have 4 consecutive stones. Place your stone to complete 5 in a line and win immediately."
             )
-        elif stats["rival_chain"] >= 4 or self._has_open_three(game_state.board, rival):
-            situation_rules = (
-                    "CRITICAL THREAT: Opponent will win next at {opp_win_hint}. "
-                    "Your next move must be {opp_win_hint}. "
-                    "Select EXACTLY ONE coordinate from REQUIRED_MOVES and place your stone there. "
-                    "Do NOT consider any other moves"
-                )
+
         elif stats["rival_chain"] >= 4 or self._has_open_three(game_state.board, rival):
             if opp_win_hint is not None:
                 situation_rules = (
