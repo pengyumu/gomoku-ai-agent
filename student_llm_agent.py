@@ -148,6 +148,19 @@ class StudentLLMAgent(Agent):
                     "Select EXACTLY ONE coordinate from REQUIRED_MOVES and place your stone there. "
                     "Do NOT consider any other moves"
                 )
+         elif stats["rival_chain"] >= 4 or self._has_open_three(game_state.board, rival):
+            if opp_win_hint is not None:
+                situation_rules = (
+                    "CRITICAL THREAT: Opponent will win next at {opp_win_hint}. "
+                    "Your next move must be {opp_win_hint}. "
+                    "Select EXACTLY ONE coordinate from REQUIRED_MOVES and place your stone there. "
+                    "Do NOT consider any other moves"
+                )
+            else:
+                situation_rules = (
+                    "Opponent shows a strong threat (four-in-line or open three). "
+                    "Prioritize blocking; if two blocks exist, prefer the one that also extends your line."
+                )
            
         elif stats["my_chain"] >= 3:
             situation_rules = (
@@ -155,7 +168,7 @@ class StudentLLMAgent(Agent):
             )
         elif stats["my_chain"] >= 2 and stats["rival_chain"] <= 2:
             situation_rules = (
-                "You have 2 consecutive stones. You must extend to 3 in a line, preferably an open three."
+                "You have 2 consecutive stones. You must extend to 3, preferably open-ended."
             )
         elif stats["rival_chain"] >= 3:
             situation_rules = (
